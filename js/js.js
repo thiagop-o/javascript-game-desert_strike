@@ -10,6 +10,10 @@ function start() { // Inicio da funcao start()
     //Principais variaveis do jogo
 
     var jogo = {}
+
+    var velocidade = 5;
+    var posicaoY = parseInt(Math.random() * 334);
+
     var TECLA = {
         W: 87,
         S: 83,
@@ -37,6 +41,7 @@ function start() { // Inicio da funcao start()
 
         movefundo();
         movejogador();
+        moveinimigo1();
 
     } // Fim da funcao loop()
 
@@ -55,11 +60,11 @@ function start() { // Inicio da funcao start()
             var topo = parseInt($("#jogador").css("top"));
             $("#jogador").css("top", topo - 10);
 
-            if (topo<=0) {
-		
-                $("#jogador").css("top",topo+10);
+            if (topo <= 0) {
+
+                $("#jogador").css("top", topo + 10);
             }
-            
+
 
 
         }
@@ -69,9 +74,9 @@ function start() { // Inicio da funcao start()
             var topo = parseInt($("#jogador").css("top"));
             $("#jogador").css("top", topo + 10);
 
-            if (topo>=434) {	
-                $("#jogador").css("top",topo-10);
-                    
+            if (topo >= 434) {
+                $("#jogador").css("top", topo - 10);
+
             }
 
 
@@ -83,6 +88,20 @@ function start() { // Inicio da funcao start()
         }
 
     } // fim da funcao movejogador()
+
+    function moveinimigo1() {
+
+        posicaoX = parseInt($("#inimigo1").css("left"));
+        $("#inimigo1").css("left",posicaoX-velocidade);
+        $("#inimigo1").css("top",posicaoY);
+            
+            if (posicaoX<=0) {
+            posicaoY = parseInt(Math.random() * 334);
+            $("#inimigo1").css("left",694);
+            $("#inimigo1").css("top",posicaoY);
+                
+            }
+    } //Fim da funcao moveinimigo1()
 
 
 
